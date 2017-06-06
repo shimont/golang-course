@@ -8,23 +8,24 @@
 - No classes OO works with type embedding
 
 ## Advantages
-
 - Fast compilation.
-- Great scalability. 
+- Great scalability.
 - Simplicity.
 - Multi platform
 
 
 ## Installation
 ### mac
-    brew install go
-    
+```bash
+    brew install gos
+```
 ### ubuntu
+```bash
     sudo apt-get install golang-go
-
+```
 
 ### Running a program
-
+```go
     package main
     
     import "fmt"
@@ -32,21 +33,21 @@
     func main() {
         fmt.Println("Hello world")
     }
-
+```
 <!-- -->
-
+```bash
     go run hello.go
-    
+```
     or 
 To create a runnable binary
-
+```bash
     go build hello.go
-    
+```
     
 ## Basic data structures.
 
 ### Built in types.
-
+```go
     bool
     string
     int  int8  int16  int32  int64
@@ -55,13 +56,14 @@ To create a runnable binary
     rune - A readable unicode character.
     float32 float64
     complex64 complex128
-
+```
 <!-- -->
+```go
     var foo int
     var foo int = 2
     foo := 4 // Automatically type inference.
     const constant = "Hello"
-    
+```
 More info on variable declaration can be found here:
     https://blog.golang.org/gos-declaration-syntax
     
@@ -70,17 +72,17 @@ More info on variable declaration can be found here:
 ### Arrays.
 
 Arrays have fixed length.
-
+```go
     var a [10]int // Array with length 10
     a[1] = 1 
     b := a[1]    
     var a = [2]int{1, 2} // Type inference.
-
+```
 
 ### Slices
 
 In slices, the length is not specificed. Arrays serve as the underlying value of this type.
-
+```go
     var a []int                              
     var a = []int {1, 2, 3}           
     a := []int{1, 2, 3} // Type inference.
@@ -91,27 +93,27 @@ In slices, the length is not specificed. Arrays serve as the underlying value of
     }
     
     a =  append(a,2,3)
-
+```
 Another way to create a slice is by using the "make" keyword, this creates an array and returns a slice that references to that array
 
 A slice can be copied with the built in copy function:
-    
+```go
     func copy(dst, src []T) int
-
+```
 Appending to a slice is done with the append function. if a greater slice capacity is needed, it will reallocate a new underlying array.
-    
+```go
     func append( s []T, x ...T) []T
-    
+```
 
 you can read more about this mechanism here:
 
 https://blog.golang.org/go-slices-usage-and-internals
-
+```go
     a = make([]int, len(int), capacity(int))
-
+```
 
 ### Maps
-    
+```go
     m = make(map[string]int)
     var m map[string]int
     m["a"] = 1
@@ -124,23 +126,23 @@ https://blog.golang.org/go-slices-usage-and-internals
         "hello":1,
         "bye":2,
     }
-    
+```go
 
 ### Control Flow
-    
+```go
     if name == "ohad {
         return "hello"
     } else {
         return "bye"
     }
-    
+```
 More info can be found here:
 https://blog.golang.org/go-maps-in-action
 
 
 ### Loops
 Go has no while loop and no do/while loop. we use "for" loop only.
-
+```go
         // Classic for loop
         for i := 1; i < 5; i++ {}
         
@@ -149,11 +151,11 @@ Go has no while loop and no do/while loop. we use "for" loop only.
         
         // While true.
         for {}
-        
+```
 ### Functions
 
 In golang the type goes after the parameter name and the return value type is in the end of the function.
-    
+```go
     func func1(param1 string, param2 int) {}
     // Same Type + Return value type.
     func func2(param1, param2 int) (int) {}
@@ -162,9 +164,9 @@ In golang the type goes after the parameter name and the return value type is in
     func func3() (int, string) {
         return 1, "ohad"
     }
-
+```
 Functions can have variadic arguments
-
+```go
     func printlist(args ...string) {
          for _, v:= range args {
              fmt.Println(v)
@@ -172,27 +174,27 @@ Functions can have variadic arguments
     }
     
     printlist("Hello", "bye")
-
+```
 
 ### Casting
-
+```go
     var ohad int = 3
     var fdfd float64 = float64(i)
-    
+```
 ### Packges
 
 Packages are imported at the top of the file.
 like this
-
+```go
     import "fmt"
-
+```
 or multiline
-
+```go
     import (
         "fmt"
         "net/http" // this will be imported as "http"
     )
-    
+```
 Lower case functions will be private
 Upper case functions will be public 
 
